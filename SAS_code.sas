@@ -14,7 +14,6 @@ The date needs to be kept dynamic.;
 %macro maxsales(currentdate=);
 *%let cdate = %sysfunc(INPUTN(&currentdate, date9.), ddmmyy10.);
 %let cdate = %sysfunc(putn("&currentdate"d,5.));
-format &cdate ddmmyy10.;
 proc sql outobs=1;
 create table maxsaleday as 
 select input(scan(o1.InvoiceDate,1,' '), ddmmyy10.) as date format=date9., 

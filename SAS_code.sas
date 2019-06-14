@@ -17,7 +17,7 @@ proc sql;
 create table maxsaleday as 
 select input(scan(InvoiceDate,1,' '), ddmmyy10.) as date format=date9., 
 sum(Quantity*UnitPrice) as TotalSale format=comma12.2
-from onlineretail o1
+from onlineretail
 where input(scan(InvoiceDate,1,' '), ddmmyy10.) >= &cdate-7 
 and input(scan(InvoiceDate,1,' '), ddmmyy10.) < &cdate
 group by date
